@@ -5,8 +5,12 @@
       <div>Scale:{{$store.state.scale}}</div>
       <el-button type="primary"
                  @click="changeScale">改变Scale</el-button>
+    <button @click="$store.commit('newiframeList')">add</button>
     </div>
-    <mainContent></mainContent>
+      <div class="hah" v-for="item in iframeList" :key="item.id">
+        jajaj
+      </div>
+      <mainContent></mainContent>
   </div>
 </template>
 
@@ -14,11 +18,15 @@
 // @ is an alias to B/src
 import mainContent from './main'
 import { Button } from 'element-ui'
+import { mapGetters } from 'vuex'
 export default {
   name: 'Home',
   components: {
     mainContent,
     [Button.name]: Button
+  },
+  computed: {
+    ...mapGetters(['iframeList'])
   },
   methods: {
     changeScale () {
@@ -37,5 +45,10 @@ export default {
   background: pink;
   height: 100%;
   width: 20%;
+}
+.hah {
+  height: 100%;
+  width: 80%;
+
 }
 </style>

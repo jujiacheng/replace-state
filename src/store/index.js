@@ -5,13 +5,28 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    scale: 100
+    scale: 100,
+    iframeList: [
+      {
+        id: 1
+      }
+    ]
   },
   mutations: {
     newSacle (state, scale) {
       // mutate state
       state.scale = scale
+    },
+    newiframeList (state) {
+      const list = [...state.iframeList]
+      list[list.length] = { id: 13123 }
+      state.iframeList = list
     }
   },
-  actions: {}
+  actions: {},
+  getters: {
+    iframeList (state) {
+      return state.iframeList
+    }
+  }
 })
